@@ -1,27 +1,68 @@
-# expense_tracker_ai
+# Expense Tracker AI
 
-A new Flutter project.
+AI-powered Expense Tracker built using Flutter, BLoC, Hive, and Gemini AI.
 
-## Getting Started
+## Features
 
-This project is a starting point for a Flutter application.
-Expense Tracker AI
-
-Features:
 - Add Expense
-- Edit/Delete Expense
+- Edit Expense
+- Delete Expense
 - Receipt Scanner using Gemini AI
+- Camera Support
+- Gallery Support
 - AI Spending Insights
 - Hive Local Storage
 - BLoC State Management
-- Camera & Gallery Support
-A few resources to get you started if this is your first Flutter project:
+- Expense Categories
+- Auto-fill Expense from Receipt
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Flutter
+- Dart
+- Flutter BLoC
+- Hive Database
+- Gemini AI
+- Image Picker
 
+## Architecture
 
+- Presentation Layer
+    - Screens
+    - BLoC
+
+- Data Layer
+    - Models
+    - Repository
+
+- Core Layer
+    - Gemini Service
+
+## Screens
+
+- Home Screen
+- Add Expense Screen
+- Receipt Scanner Screen
+- AI Spending Insights Screen
+
+## Setup
+
+1. Clone repository
+2. Create `.env` file
+3. Add Gemini API key
+
+```env
+GEMINI_API_KEY=YOUR_API_KEY
+```
+
+4. Run project
+
+```bash
+flutter pub get
+flutter run
+```
+
+## Author
+
+Himani Gupta
+Android & Flutter Developer

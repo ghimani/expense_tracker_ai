@@ -108,6 +108,7 @@ class HomeScreen extends StatelessWidget {
 
                 Expanded(
                   child: ListView.builder(
+                    padding: const EdgeInsets.only(bottom: 100),
                     itemCount:
                     state.expenses.length,
 
