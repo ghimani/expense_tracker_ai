@@ -22,6 +22,8 @@ class _SpendingInsightsScreenState
   Future<void> generateInsights(
       List expenses) async {
 
+    if (isLoading) return;
+
     setState(() {
       isLoading = true;
     });
@@ -76,15 +78,18 @@ class _SpendingInsightsScreenState
                 children: [
 
                   ElevatedButton(
-                    onPressed: () {
-                      generateInsights(
-                        state.expenses,
-                      );
-                    },
+                    onPressed: isLoading
+                        ? null
+                        : () => generateInsights(state.expenses),
 
-                    child: const Text(
-                      "Generate Report",
-                    ),
+
+                      child: Text(
+                        isLoading
+                            ? "Generating..."
+                            : insight.isEmpty
+                            ? "Generate Report"
+                            : "Refresh Report",
+                      ),
                   ),
 
                   const SizedBox(
