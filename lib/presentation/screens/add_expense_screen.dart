@@ -44,13 +44,20 @@ class _AddExpenseScreenState
 
       category = category.trim();
 
+      if (category.toLowerCase() == "grocery") {
+        category = "Groceries";
+      }
+
+      if (category.toLowerCase() == "food delivery") {
+        category = "Food";
+      }
+
       if (categories.contains(category)) {
         selectedCategory = category;
       } else {
         selectedCategory = "Others";
       }
-    }
-  }
+    }  }
   final merchantController =
   TextEditingController();
 
@@ -137,6 +144,9 @@ class _AddExpenseScreenState
             ElevatedButton(
 
               onPressed: () {
+                print("Merchant = ${merchantController.text}");
+                print("Amount = ${amountController.text}");
+                print("Category = $selectedCategory");
 
                 final expense = ExpenseModel(
                   merchantName:
