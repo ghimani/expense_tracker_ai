@@ -47,7 +47,9 @@ class _AddExpenseScreenState
       if (category.toLowerCase() == "grocery") {
         category = "Groceries";
       }
-
+      if (category.toLowerCase() == "supermarket") {
+        category = "Groceries";
+      }
       if (category.toLowerCase() == "food delivery") {
         category = "Food";
       }
@@ -142,36 +144,29 @@ class _AddExpenseScreenState
             const SizedBox(height: 25),
 
             ElevatedButton(
-
               onPressed: () {
+
+                final amount = amountController.text
+                    .replaceAll("\$", "")
+                    .replaceAll(",", "")
+                    .trim();
+
                 print("Merchant = ${merchantController.text}");
-                print("Amount = ${amountController.text}");
+                print("Amount = $amount");
                 print("Category = $selectedCategory");
 
                 final expense = ExpenseModel(
-                  merchantName:
-                  merchantController.text,
-
+                  merchantName: merchantController.text,
                   category: selectedCategory,
-
-                  amount: double.parse(
-                    amountController.text,
-                  ),
-
+                  amount: double.parse(amount),
                   date: DateTime.now().toString(),
                 );
 
                 if (widget.isEdit) {
-
                   context.read<ExpenseBloc>().add(
-                    UpdateExpense(
-                      widget.index!,
-                      expense,
-                    ),
+                    UpdateExpense(widget.index!, expense),
                   );
-
                 } else {
-
                   context.read<ExpenseBloc>().add(
                     AddExpense(expense),
                   );
@@ -179,14 +174,10 @@ class _AddExpenseScreenState
 
                 Navigator.pop(context);
               },
-
               child: Text(
-                widget.isEdit
-                    ? "Update Expense"
-                    : "Save Expense",
+                widget.isEdit ? "Update Expense" : "Save Expense",
               ),
-            )
-          ],
+            )          ],
         ),
       ),
     );
