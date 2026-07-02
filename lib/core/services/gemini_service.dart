@@ -64,12 +64,25 @@ Do not use ```json.
     final data = jsonDecode(text);
 
     return {
-      "merchantName": data["merchantName"] ?? "Unknown",
-      "amount": data["amount"] ?? "0",
-      "date": data["date"]?.toString().isNotEmpty == true
+      "merchantName":
+      data["merchantName"]?.toString().isNotEmpty == true
+          ? data["merchantName"]
+          : "Unknown",
+
+      "amount":
+      data["amount"]?.toString().isNotEmpty == true
+          ? data["amount"]
+          : "0",
+
+      "date":
+      data["date"]?.toString().isNotEmpty == true
           ? data["date"]
           : DateTime.now().toString().split(" ")[0],
-      "category": data["category"] ?? "Others",
+
+      "category":
+      data["category"]?.toString().isNotEmpty == true
+          ? data["category"]
+          : "Others",
     };
   }
 

@@ -21,6 +21,12 @@ class _SpendingInsightsScreenState
 
   Future<void> generateInsights(
       List expenses) async {
+    if (expenses.isEmpty) {
+      setState(() {
+        insight = "No expenses available";
+      });
+      return;
+    }
 
     if (isLoading) return;
 
@@ -35,7 +41,9 @@ class _SpendingInsightsScreenState
           .generateInsights(expenses);
 
       setState(() {
-        insight = result;
+        insight = result
+            .replaceAll("**", "")
+            .replaceAll("* ", "• ");
       });
 
     } catch (e) {
